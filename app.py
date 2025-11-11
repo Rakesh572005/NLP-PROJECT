@@ -26,7 +26,7 @@ def main():
         <div class="nav-right">
           <a href="#home">Home</a>
           <a href="#developer">Developer</a>
-          <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Portfolio</a>
+          <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
       </div>
@@ -57,7 +57,7 @@ def main():
     # ===== PAGE HEADER =====
     st.markdown("""
       <section id="home" class="page-header">
-        <h1 class="main-heading">📘 Context-Aware PDF Summarizer</h1>
+        <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
         <hr class="main-divider">
       </section>
     """, unsafe_allow_html=True)
@@ -65,10 +65,10 @@ def main():
     # ===== SIDEBAR =====
     with st.sidebar:
         st.image("https://img.icons8.com/ios-filled/100/1976d2/pdf.png", width=80)
-        st.markdown("## 📘 PDF Summarizer")
+        st.markdown("## PDF Summarizer")
         st.markdown("Upload PDFs and extract key insights effortlessly.")
         st.markdown("---")
-        st.markdown("👨‍💻 **Created by:** Rakeshuuuu")
+        st.markdown("**Created by:** Batch-15")
         st.markdown("🌐 [Visit Portfolio](https://rakesh-manubolu.vercel.app/)")
 
     # ===== FILE UPLOAD =====
