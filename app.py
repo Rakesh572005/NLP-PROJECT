@@ -119,7 +119,7 @@ def main():
     st.markdown("""
     <section id="developer" class="developer-section">
       <h2>👨‍💻 About the Developer</h2>
-      <p>Built by <strong>Rakeshuuuu</strong> — a passionate developer from LBRCE focusing on AI, Web, and IoT innovation.</p>
+      <p>Built by <strong>Batch-15</strong> — a passionate developer from LBRCE focusing on AI, Web, and IoT innovation.</p>
       <p>💻 <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Visit Portfolio</a></p>
       <p>📧 rakeshuuuu@gmail.com</p>
       <p class="copy">© 2025 Rakeshuuuu — All Rights Reserved</p>
