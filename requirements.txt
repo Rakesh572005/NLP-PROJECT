@@ -2,8 +2,3 @@ streamlit
 fitz
 nltk
 spacy
-string
-collections 
-heapq
-nltk.corpus 
-nltk.tokenize 
