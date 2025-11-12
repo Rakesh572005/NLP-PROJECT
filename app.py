@@ -13,7 +13,7 @@ def load_css():
 # MAIN FUNCTION
 # ==========================
 def main():
-    st.set_page_config(page_title="Context-Aware PDF Summarizer", page_icon="📘", layout="wide")
+    st.set_page_config(page_title="Context-Aware PDF Summarizer", page_icon="📘", layout="wide", initial_sidebar_state="expanded")
     load_css()
 
     # ===== FIXED NAVBAR =====
@@ -54,7 +54,6 @@ def main():
     </script>
     """, unsafe_allow_html=True)
 
-    # ===== PAGE HEADER =====
     st.markdown("""
       <section id="home" class="page-header">
         <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
@@ -115,15 +114,16 @@ def main():
             st.write(context_summary)
         st.markdown("</div>", unsafe_allow_html=True)
 
-    # ===== DEVELOPER SECTION (BOTTOM) =====
     st.markdown("""
-    <section id="developer" class="developer-section">
-      <h2>👨‍💻 About the Developer</h2>
-      <p>Built by <strong>Batch-15</strong> — a passionate developer from LBRCE focusing on AI, Web, and IoT innovation.</p>
-      <p>💻 <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Visit Portfolio</a></p>
-      <p>📧 rakeshuuuu@gmail.com</p>
-      <p class="copy">© 2025 Rakeshuuuu — All Rights Reserved</p>
-    </section>
+    <footer id="developer" class="footer">
+      <div class="footer-content">
+        <h3>👨‍💻 About the Developer</h3>
+        <p>Built by <strong>Batch-15</strong> — a passionate developer from LBRCE focusing on AI, Web, and IoT innovation.</p>
+        <p>💻 <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Visit Portfolio</a></p>
+        <p>📧 rakeshuuuu@gmail.com</p>
+        <p class="copy">© 2025 Rakeshuuuu — All Rights Reserved</p>
+      </div>
+    </footer>
     """, unsafe_allow_html=True)
 
 
