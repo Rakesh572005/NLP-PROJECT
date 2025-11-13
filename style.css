@@ -22,94 +22,61 @@ header[data-testid="stHeader"],
   display: none !important;
 }
 
-/* ===== FIXED NAVBAR ===== */
-.custom-navbar {
+/* NAVBAR – SIMPLE + MOBILE FRIENDLY */
+.fixed-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #1976d2;
-  color: white;
-  z-index: 9999;
   height: 60px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.nav-content {
-  max-width: 1200px;
-  margin: auto;
-  height: 100%;
+  background-color: #1976d2;
+  color: #fff;
+  z-index: 9999;
   display: flex;
   align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.nav-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 15px;
+  display: flex;
   justify-content: space-between;
-  padding: 0 2rem;
+  align-items: center;
 }
 
 .nav-logo {
-  height: 42px;
+  height: 38px;
 }
 
-.nav-right a {
-  color: #ffffff;
-  text-decoration: none;
-  margin-left: 25px;
-  font-weight: 500;
-  transition: color 0.2s ease-in-out;
-}
-.nav-right a:hover {
-  color: #bbdefb;
-}
-
-/* ===== HAMBURGER MENU ===== */
-.hamburger {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-  color: #ffffff;
-}
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: -250px;
-  width: 250px;
-  height: 100%;
-  background-color: #ffffff;
-  color: #0f172a;
-  box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+.nav-links {
   display: flex;
-  flex-direction: column;
-  padding-top: 70px;
-  transition: 0.3s ease-in-out;
-  z-index: 10000;
+  gap: 15px;
 }
-.mobile-menu a {
-  padding: 15px 25px;
+
+.nav-links a {
+  color: white;
+  font-size: 16px;
   text-decoration: none;
-  color: #0f172a;
-  font-weight: 500;
-  font-size: 18px;
-  border-bottom: 1px solid #e0e0e0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: 0.2s;
 }
-.mobile-menu a:hover {
-  background-color: #f1f5f9;
-  color: #1976d2;
+
+.nav-links a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }
-.mobile-menu.open {
-  right: 0;
-}
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 25px;
-  color: #1976d2;
-}
-@media (max-width: 768px) {
-  .nav-right {
-    display: none;
+
+/* MOBILE FIX — NEVER HIDE LINKS */
+@media (max-width: 480px) {
+  .nav-links {
+    gap: 10px;
   }
-  .hamburger {
-    display: block;
+  .nav-links a {
+    font-size: 14px;
+    padding: 4px 6px;
   }
 }
 

@@ -17,42 +17,98 @@ def main():
     load_css()
 
     # ===== FIXED NAVBAR =====
-    st.markdown("""
-    <nav class="custom-navbar">
-      <div class="nav-content">
-        <div class="nav-left">
-          <img src="https://img.icons8.com/color/48/artificial-intelligence.png" class="nav-logo" />
+    # st.markdown("""
+    # <nav class="custom-navbar">
+    #   <div class="nav-content">
+    #     <div class="nav-left">
+    #       <img src="https://img.icons8.com/color/48/artificial-intelligence.png" class="nav-logo" />
+    #     </div>
+    #     <div class="nav-right">
+    #       <a href="#home">Home</a>
+    #       <a href="#developer">Developer</a>
+    #       <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
+    #     </div>
+    #     <div class="hamburger" onclick="toggleMenu()">☰</div>
+    #   </div>
+    # </nav>
+
+    # <div id="mobileMenu" class="mobile-menu">
+    #   <a href="#home" onclick="toggleMenu()">Home</a>
+    #   <a href="#developer" onclick="toggleMenu()">Developer</a>
+    #   <a href="https://rakesh-manubolu.vercel.app/" target="_blank" onclick="toggleMenu()">Portfolio</a>
+    #   <a href="#" class="close-btn" onclick="toggleMenu()">✕</a>
+    # </div>
+
+    # <script>
+    #   function toggleMenu(){
+    #     document.getElementById("mobileMenu").classList.toggle("open");
+    #   }
+    #   document.addEventListener('DOMContentLoaded', function(){
+    #     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+    #       anchor.addEventListener('click', function(e){
+    #         e.preventDefault();
+    #         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    #       });
+    #     });
+    #   });
+    # </script>
+    # """, unsafe_allow_html=True)
+    
+    #changed
+    # ===== FIXED NAVBAR =====
+    st.markdown(
+        """
+    <style>
+    .fixed-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        background-color: #1976d2;
+        color: white;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    .nav-inner {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .nav-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0 12px;
+        font-size: 16px;
+    }
+    .nav-links a:hover {
+        text-decoration: underline;
+    }
+    </style>
+
+    <nav class="fixed-nav">
+        <div class="nav-inner">
+            <img src="https://img.icons8.com/color/48/artificial-intelligence.png" style="height:40px;" />
+            <div class="nav-links">
+                <a href="#home">Home</a>
+                <a href="#developer">Developer</a>
+                <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
+            </div>
         </div>
-        <div class="nav-right">
-          <a href="#home">Home</a>
-          <a href="#developer">Developer</a>
-          <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
-        </div>
-        <div class="hamburger" onclick="toggleMenu()">☰</div>
-      </div>
     </nav>
+    """,
+        unsafe_allow_html=True
+    )
 
-    <div id="mobileMenu" class="mobile-menu">
-      <a href="#home" onclick="toggleMenu()">Home</a>
-      <a href="#developer" onclick="toggleMenu()">Developer</a>
-      <a href="https://rakesh-manubolu.vercel.app/" target="_blank" onclick="toggleMenu()">Portfolio</a>
-      <a href="#" class="close-btn" onclick="toggleMenu()">✕</a>
-    </div>
 
-    <script>
-      function toggleMenu(){
-        document.getElementById("mobileMenu").classList.toggle("open");
-      }
-      document.addEventListener('DOMContentLoaded', function(){
-        document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-          anchor.addEventListener('click', function(e){
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-          });
-        });
-      });
-    </script>
-    """, unsafe_allow_html=True)
+
+
 
     # st.markdown("""
     #   <section id="home" class="page-header">
