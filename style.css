@@ -220,3 +220,7 @@ div[data-testid="stFileUploader"] div:nth-child(3) {
 .stButton > button:hover {
   background-color: #1565c0 !important;
 }
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+    display: none !important;
+    visibility: hidden !important;
+}

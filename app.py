@@ -54,11 +54,25 @@ def main():
     </script>
     """, unsafe_allow_html=True)
 
+    # st.markdown("""
+    #   <section id="home" class="page-header">
+    #     <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
+    #     <hr class="main-divider">
+    #   </section>
+    # """, unsafe_allow_html=True)
+
     st.markdown("""
-      <section id="home" class="page-header">
-        <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
-        <hr class="main-divider">
-      </section>
+        <style>
+            h1 a, h2 a, h3 a {
+                display: none !important;
+                visibility: hidden !important;
+            }
+        </style>
+
+        <section id="home" class="page-header">
+            <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
+            <hr class="main-divider">
+        </section>
     """, unsafe_allow_html=True)
 
     # ===== SIDEBAR =====
