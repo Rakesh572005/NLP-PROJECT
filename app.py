@@ -178,10 +178,6 @@ def main():
         st.markdown("### Suggestions :")
         for s in suggestions:
             st.markdown(f"- {s}")
-
-
-        for s in suggestions:
-            st.markdown(f"- {s}")
         st.markdown("</div>", unsafe_allow_html=True)
 
         # ===== CONTEXT-AWARE SECTION =====
