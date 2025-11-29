@@ -98,7 +98,7 @@ def main():
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#developer">Developer</a>
-                <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
+                <a href="" target="_blank">Other Services</a>
             </div>
         </div>
     </nav>
@@ -138,26 +138,26 @@ def main():
         st.markdown("Upload PDFs and extract key insights effortlessly.")
         st.markdown("---")
         st.markdown("**Created by:** Batch-15")
-        st.markdown("🌐 [Visit Portfolio](https://rakesh-manubolu.vercel.app/)")
+        #st.markdown("🌐 [Visit Portfolio](https://rakesh-manubolu.vercel.app/)")
 
     # ===== FILE UPLOAD =====
-    pdf_file = st.file_uploader("📂 Upload your PDF file", type=["pdf"], key="pdf_uploader_main")
+    pdf_file = st.file_uploader(" Upload your PDF file", type=["pdf"], key="pdf_uploader_main")
 
     if pdf_file:
-        with st.spinner("⏳ Extracting and analyzing text..."):
+        with st.spinner(" Extracting and analyzing text..."):
             text = extract_text_from_pdf(pdf_file)
 
         if len(text.strip()) == 0:
-            st.error("❌ No readable text found in the PDF.")
+            st.error(" No readable text found in the PDF.")
             return
 
         # ===== SUMMARY SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
-        st.subheader("📝 Extracted Summary")
+        st.subheader(" Extracted Summary")
         summary = summarize_text(text)
         st.write(summary)
         st.download_button(
-            label="💾 Download Summary",
+            label=" Download Summary",
             data=summary,
             file_name="pdf_summary.txt",
             mime="text/plain"
@@ -167,15 +167,26 @@ def main():
         # ===== INSIGHTS SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader("💡 Key Insights & Suggestions")
-        entities, suggestions = extract_insights(text)
-        st.write("**Top Entity Types:**", entities)
+        # entities, suggestions = extract_insights(text)
+        # st.write("**Top Entity Types:**", entities)
+
+        insights_text, suggestions = extract_insights(text)
+
+        st.markdown("### Key Insights :")
+        st.write(insights_text)
+
+        st.markdown("### Suggestions :")
+        for s in suggestions:
+            st.markdown(f"- {s}")
+
+
         for s in suggestions:
             st.markdown(f"- {s}")
         st.markdown("</div>", unsafe_allow_html=True)
 
         # ===== CONTEXT-AWARE SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
-        st.subheader("🎯 Context-Aware Re-Summarization")
+        st.subheader(" Context-Aware Re-Summarization")
         user_input = st.text_input("Enter a focus area (e.g., 'methods', 'results', 'finance'):")
         if user_input:
             with st.spinner("Generating context-aware summary..."):
@@ -187,11 +198,10 @@ def main():
     st.markdown("""
     <footer id="developer" class="footer">
       <div class="footer-content">
-        <h3>👨‍💻 About the Developer</h3>
+        <h3> About the Developer</h3>
         <p>Built by <strong>Batch-15</strong> — a passionate developer from LBRCE focusing on AI, Web, and IoT innovation.</p>
-        <p>💻 <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Visit Portfolio</a></p>
-        <p>📧 rakeshuuuu@gmail.com</p>
-        <p class="copy">© 2025 Rakeshuuuu — All Rights Reserved</p>
+        <p> BATCH15@gmail.com</p>
+        <p class="copy">© 2025 BATCH15 — All Rights Reserved</p>
       </div>
     </footer>
     """, unsafe_allow_html=True)

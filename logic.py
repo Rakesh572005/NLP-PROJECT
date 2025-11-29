@@ -64,22 +64,82 @@ def summarize_text(text, num_sentences=5):
 # ==============================
 # 4. INSIGHT EXTRACTION
 # ==============================
+# def extract_insights(text):
+#     doc = nlp(text)
+#     entity_labels = [ent.label_ for ent in doc.ents]
+#     most_common = Counter(entity_labels).most_common(3)
+
+#     suggestions = []
+#     if "ORG" in entity_labels:
+#         suggestions.append("This document involves organizations — consider analyzing relationships between them.")
+#     if "DATE" in entity_labels:
+#         suggestions.append("Dates are mentioned — explore event timelines.")
+#     if "GPE" in entity_labels:
+#         suggestions.append("Contains geographical data — consider mapping or location-based insights.")
+#     if not suggestions:
+#         suggestions.append("General informative document — extract keywords for deeper insights.")
+
+#     return most_common, suggestions
+
+
+
 def extract_insights(text):
     doc = nlp(text)
-    entity_labels = [ent.label_ for ent in doc.ents]
-    most_common = Counter(entity_labels).most_common(3)
 
+    entity_map = {
+        "ORG": [],
+        "PERSON": [],
+        "DATE": [],
+        "GPE": [],
+        "CARDINAL": []
+    }
+
+    for ent in doc.ents:
+        if ent.label_ in entity_map:
+            entity_map[ent.label_].append(ent.text)
+
+    # remove duplicates, keep first few only
+    for k in entity_map:
+        entity_map[k] = list(dict.fromkeys(entity_map[k]))[:10]
+
+    # Build natural language summaries
+    insights_text = ""
+
+    if entity_map["ORG"]:
+        insights_text += f"This PDF mentions organizations such as {', '.join(entity_map['ORG'])}. "
+    if entity_map["PERSON"]:
+        insights_text += f"It includes people like {', '.join(entity_map['PERSON'])}. "
+    if entity_map["DATE"]:
+        insights_text += f"Important dates found include {', '.join(entity_map['DATE'])}. "
+    if entity_map["GPE"]:
+        insights_text += f"Geographical locations mentioned are {', '.join(entity_map['GPE'])}. "
+    if entity_map["CARDINAL"]:
+        insights_text += f"Several numerical values appear, such as {', '.join(entity_map['CARDINAL'])}. "
+
+    if insights_text == "":
+        insights_text = "No significant entities (people, orgs, dates, locations) were detected in this PDF."
+
+    # Suggestions
     suggestions = []
-    if "ORG" in entity_labels:
-        suggestions.append("This document involves organizations — consider analyzing relationships between them.")
-    if "DATE" in entity_labels:
-        suggestions.append("Dates are mentioned — explore event timelines.")
-    if "GPE" in entity_labels:
-        suggestions.append("Contains geographical data — consider mapping or location-based insights.")
-    if not suggestions:
-        suggestions.append("General informative document — extract keywords for deeper insights.")
 
-    return most_common, suggestions
+    if entity_map["ORG"]:
+        suggestions.append("Try exploring how these organizations relate to each other in the context of the PDF.")
+    if entity_map["PERSON"]:
+        suggestions.append("The people mentioned may be key contributors or stakeholders.")
+    if entity_map["DATE"]:
+        suggestions.append("Dates could represent important events or chronological flow.")
+    if entity_map["GPE"]:
+        suggestions.append("The mentioned locations may provide geographical context to the document.")
+    if entity_map["CARDINAL"]:
+        suggestions.append("The numbers in the PDF may indicate statistics, counts, or measurements.")
+
+    if not suggestions:
+        suggestions.append("This PDF looks general—no strong insights detected.")
+
+    return insights_text.strip(), suggestions
+
+
+
 
 # ==============================
 # 5. CONTEXT-AWARE SUMMARIZATION
