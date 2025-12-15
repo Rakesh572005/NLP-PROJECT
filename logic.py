@@ -8,10 +8,6 @@ from heapq import nlargest
 from nltk.corpus import stopwords
 from nltk.tokenize import sent_tokenize, word_tokenize
 
-# ==============================
-# INITIAL SETUP
-# ==============================
-# Ensure required tokenizer data is available
 try:
     nltk.data.find('tokenizers/punkt')
     nltk.data.find('tokenizers/punkt_tab')
@@ -24,29 +20,20 @@ nltk.download('averaged_perceptron_tagger')
 nltk.download('wordnet')
 
 nlp = spacy.load("en_core_web_sm")
-
-# ==============================
-# 1. EXTRACT TEXT FROM PDF
-# ==============================
+#extract
 def extract_text_from_pdf(uploaded_file):
     text = ""
     with fitz.open(stream=uploaded_file.read(), filetype="pdf") as doc:
         for page in doc:
             text += page.get_text()
     return text
-
-# ==============================
-# 2. PREPROCESS TEXT
-# ==============================
+#preprocess
 def preprocess_text(text):
     words = word_tokenize(text.lower())
     stop_words = set(stopwords.words("english"))
     filtered_words = [w for w in words if w.isalpha() and w not in stop_words]
     return filtered_words
-
-# ==============================
-# 3. SUMMARIZATION
-# ==============================
+#summariztion
 def summarize_text(text, num_sentences=5):
     sentences = sent_tokenize(text)
     words = preprocess_text(text)
@@ -60,26 +47,6 @@ def summarize_text(text, num_sentences=5):
 
     summary = nlargest(num_sentences, scores, key=scores.get)
     return " ".join(summary)
-
-# ==============================
-# 4. INSIGHT EXTRACTION
-# ==============================
-# def extract_insights(text):
-#     doc = nlp(text)
-#     entity_labels = [ent.label_ for ent in doc.ents]
-#     most_common = Counter(entity_labels).most_common(3)
-
-#     suggestions = []
-#     if "ORG" in entity_labels:
-#         suggestions.append("This document involves organizations — consider analyzing relationships between them.")
-#     if "DATE" in entity_labels:
-#         suggestions.append("Dates are mentioned — explore event timelines.")
-#     if "GPE" in entity_labels:
-#         suggestions.append("Contains geographical data — consider mapping or location-based insights.")
-#     if not suggestions:
-#         suggestions.append("General informative document — extract keywords for deeper insights.")
-
-#     return most_common, suggestions
 
 
 
@@ -98,11 +65,9 @@ def extract_insights(text):
         if ent.label_ in entity_map:
             entity_map[ent.label_].append(ent.text)
 
-    # remove duplicates, keep first few only
     for k in entity_map:
         entity_map[k] = list(dict.fromkeys(entity_map[k]))[:10]
 
-    # Build natural language summaries
     insights_text = ""
 
     if entity_map["ORG"]:
@@ -119,7 +84,6 @@ def extract_insights(text):
     if insights_text == "":
         insights_text = "No significant entities (people, orgs, dates, locations) were detected in this PDF."
 
-    # Suggestions
     suggestions = []
 
     if entity_map["ORG"]:
@@ -141,9 +105,6 @@ def extract_insights(text):
 
 
 
-# ==============================
-# 5. CONTEXT-AWARE SUMMARIZATION
-# ==============================
 def summarize_based_on_input(text, user_query):
     sentences = sent_tokenize(text)
     filtered = [s for s in sentences if user_query.lower() in s.lower()]

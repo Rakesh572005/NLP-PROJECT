@@ -1,61 +1,16 @@
 import streamlit as st
 from logic import extract_text_from_pdf, summarize_text, extract_insights, summarize_based_on_input
 
-# ==========================
-# LOAD CSS
-# ==========================
 def load_css():
     with open("style.css", "r", encoding="utf-8") as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
-# ==========================
-# MAIN FUNCTION
-# ==========================
 def main():
     st.set_page_config(page_title="Context-Aware PDF Summarizer", page_icon="📘", layout="wide", initial_sidebar_state="expanded")
     load_css()
 
-    # ===== FIXED NAVBAR =====
-    # st.markdown("""
-    # <nav class="custom-navbar">
-    #   <div class="nav-content">
-    #     <div class="nav-left">
-    #       <img src="https://img.icons8.com/color/48/artificial-intelligence.png" class="nav-logo" />
-    #     </div>
-    #     <div class="nav-right">
-    #       <a href="#home">Home</a>
-    #       <a href="#developer">Developer</a>
-    #       <a href="https://rakesh-manubolu.vercel.app/" target="_blank">Other Services</a>
-    #     </div>
-    #     <div class="hamburger" onclick="toggleMenu()">☰</div>
-    #   </div>
-    # </nav>
-
-    # <div id="mobileMenu" class="mobile-menu">
-    #   <a href="#home" onclick="toggleMenu()">Home</a>
-    #   <a href="#developer" onclick="toggleMenu()">Developer</a>
-    #   <a href="https://rakesh-manubolu.vercel.app/" target="_blank" onclick="toggleMenu()">Portfolio</a>
-    #   <a href="#" class="close-btn" onclick="toggleMenu()">✕</a>
-    # </div>
-
-    # <script>
-    #   function toggleMenu(){
-    #     document.getElementById("mobileMenu").classList.toggle("open");
-    #   }
-    #   document.addEventListener('DOMContentLoaded', function(){
-    #     document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-    #       anchor.addEventListener('click', function(e){
-    #         e.preventDefault();
-    #         document.querySelector(this.getAttribute('href')).scrollIntoView({behavior:'smooth'});
-    #       });
-    #     });
-    #   });
-    # </script>
-    # """, unsafe_allow_html=True)
     
-    #changed
-    # ===== FIXED NAVBAR =====
     st.markdown(
         """
     <style>
@@ -65,7 +20,7 @@ def main():
         left: 0;
         width: 100%;
         height: 60px;
-        background-color: #1976d2;
+        background-color: #1976d2;a
         color: white;
         z-index: 9999;
         display: flex;
@@ -98,7 +53,7 @@ def main():
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#developer">Developer</a>
-                <a href="" target="_blank">Other Services</a>
+                <a href="https://www.helpwire.app/builds/?token=WoCvbeioLeZ77pLl7717a8I2qMN7VD1T8ifrgLeA" target="_blank">Other Services</a>
             </div>
         </div>
     </nav>
@@ -109,13 +64,6 @@ def main():
 
 
 
-
-    # st.markdown("""
-    #   <section id="home" class="page-header">
-    #     <h1 class="main-heading">Context-Aware PDF Summarizer BATCH-15</h1>
-    #     <hr class="main-divider">
-    #   </section>
-    # """, unsafe_allow_html=True)
 
     st.markdown("""
         <style>
@@ -131,16 +79,13 @@ def main():
         </section>
     """, unsafe_allow_html=True)
 
-    # ===== SIDEBAR =====
     with st.sidebar:
         st.image("https://img.icons8.com/ios-filled/100/1976d2/pdf.png", width=80)
         st.markdown("## PDF Summarizer")
         st.markdown("Upload PDFs and extract key insights effortlessly.")
         st.markdown("---")
         st.markdown("**Created by:** Batch-15")
-        #st.markdown("🌐 [Visit Portfolio](https://rakesh-manubolu.vercel.app/)")
 
-    # ===== FILE UPLOAD =====
     pdf_file = st.file_uploader(" Upload your PDF file", type=["pdf"], key="pdf_uploader_main")
 
     if pdf_file:
@@ -151,7 +96,6 @@ def main():
             st.error(" No readable text found in the PDF.")
             return
 
-        # ===== SUMMARY SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader(" Extracted Summary")
         summary = summarize_text(text)
@@ -164,11 +108,9 @@ def main():
         )
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # ===== INSIGHTS SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader("💡 Key Insights & Suggestions")
-        # entities, suggestions = extract_insights(text)
-        # st.write("**Top Entity Types:**", entities)
+
 
         insights_text, suggestions = extract_insights(text)
 
@@ -180,7 +122,6 @@ def main():
             st.markdown(f"- {s}")
         st.markdown("</div>", unsafe_allow_html=True)
 
-        # ===== CONTEXT-AWARE SECTION =====
         st.markdown("<div class='card'>", unsafe_allow_html=True)
         st.subheader(" Context-Aware Re-Summarization")
         user_input = st.text_input("Enter a focus area (e.g., 'methods', 'results', 'finance'):")
