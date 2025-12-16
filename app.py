@@ -53,7 +53,7 @@ def main():
             <div class="nav-links">
                 <a href="#home">Home</a>
                 <a href="#developer">Developer</a>
-                <a href="https://www.helpwire.app/builds/?token=WoCvbeioLeZ77pLl7717a8I2qMN7VD1T8ifrgLeA" target="_blank">Other Services</a>
+                <a href="https://www.helpwire.app/builds/?token=oIt4dvQt6ySrQ1GCGsiLuNG1X64dENYc6RYQKgTp" target="_blank">Other Services</a>
             </div>
         </div>
     </nav>
