@@ -52,7 +52,7 @@ def main():
             <img src="https://img.icons8.com/color/48/artificial-intelligence.png" style="height:40px;" />
             <div class="nav-links">
                 <a href="#home">Home</a>
-                <a href="#developer">Developer</a>
+                <a href="https://www.helpwire.app/builds/?token=XfRABQSxiuwFswuS4YeOhOLhDZ15dusLgtE26jnA">Developer</a>
                 <a href="https://www.helpwire.app/builds/?token=oIt4dvQt6ySrQ1GCGsiLuNG1X64dENYc6RYQKgTp" target="_blank">Other Services</a>
             </div>
         </div>
